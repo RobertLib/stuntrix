@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://o65eaxxfh1lm"]
+
+[ext_resource type="Script" uid="uid://du5uitbk4x3xy" path="res://car.gd" id="1_7822p"]
+[ext_resource type="PackedScene" uid="uid://c04kye45pop8q" path="res://car.blend" id="2_uoj53"]
+[ext_resource type="PackedScene" uid="uid://ledj285lqf2o" path="res://wheel.blend" id="3_k61xc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_24jkt"]
+points = PackedVector3Array(0.9, 0.75, 2, 0.9, -0.25, 2, 0.9, 0.75, -2, -0.9, 0.75, 2, -0.9, -0.25, 2, 0.9, -0.25, -2, -0.9, 0.75, -2, -0.9, -0.25, -2)
+
+[node name="Car" type="VehicleBody3D"]
+script = ExtResource("1_7822p")
+
+[node name="Body" parent="." instance=ExtResource("2_uoj53")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("ConvexPolygonShape3D_24jkt")
+
+[node name="Wheel_FL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0, -2)
+use_as_steering = true
+
+[node name="wheel" parent="Wheel_FL" instance=ExtResource("3_k61xc")]
+
+[node name="Wheel_FR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -2)
+use_as_steering = true
+
+[node name="wheel" parent="Wheel_FR" instance=ExtResource("3_k61xc")]
+
+[node name="Wheel_RL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0, 2)
+use_as_traction = true
+
+[node name="wheel" parent="Wheel_RL" instance=ExtResource("3_k61xc")]
+
+[node name="Wheel_RR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, 2)
+use_as_traction = true
+
+[node name="wheel" parent="Wheel_RR" instance=ExtResource("3_k61xc")]

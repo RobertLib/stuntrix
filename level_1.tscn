@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2sxrllys5rb8"]
+
+[ext_resource type="PackedScene" uid="uid://cpkw883ebjd4g" path="res://track_1.blend" id="1_hn12h"]
+[ext_resource type="PackedScene" uid="uid://o65eaxxfh1lm" path="res://car.tscn" id="2_hbghi"]
+[ext_resource type="Script" uid="uid://ch3t7rbbsm6y8" path="res://camera.gd" id="2_hn12h"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Track" parent="." instance=ExtResource("1_hn12h")]
+
+[node name="Car" parent="." instance=ExtResource("2_hbghi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660255, 0.5, 0, -0.50000006, 0.8660254, 0, 5, 5)
+current = true
+script = ExtResource("2_hn12h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 3, 4)
